@@ -1,5 +1,9 @@
-import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -9,24 +13,48 @@ import CreateGroup from "./pages/CreateGroup";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
-
 function App() {
   return (
     <BrowserRouter>
+
+      <Navbar />
+
       <Routes>
+
         <Route path="/" element={<Home />} />
+
         <Route path="/login" element={<Login />} />
+
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/groups" element={<Groups />} />
-        <Route path="/create-group" element={<CreateGroup />} />
+
+        <Route
+          path="/create-group"
+          element={
+            <ProtectedRoute>
+              <CreateGroup />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/profile" element={<Profile />} />
+
         <Route path="*" element={<NotFound />} />
+
       </Routes>
+
     </BrowserRouter>
   );
 }
 
 export default App;
-
-

@@ -4,7 +4,7 @@ StudyCircle is a React-based study group platform where students can create, joi
 
 # Live Demo
 
-(Add your deployed Netlify/Vercel link here after deployment)
+https://studycirclea.netlify.app/
 
 ## Features
 

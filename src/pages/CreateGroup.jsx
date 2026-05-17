@@ -18,6 +18,32 @@ function CreateGroup() {
 
     try {
 
+
+      await addDoc(collection(db, "groups"), {
+        title,
+        description,
+        createdAt: new Date()
+      });
+
+      alert("Group created");
+
+      setTitle("");
+      setDescription("");
+
+    
+      await addDoc(collection(db, "groups"), {
+        title,
+        description,
+        createdAt: new Date()
+      });
+
+      alert("Group created");
+
+      setTitle("");
+      setDescription("");
+
+    
+
       await addDoc(collection(db, "groups"), {
         title,
         description,

@@ -12,7 +12,7 @@ https://studycirclea.netlify.app/
 - Email/Password Authentication
 - Create Study Groups
 - Search Groups by title
-- View all study groups (Firestore)
+- View all study groups (Firestore)   
 - Protected Routes (Dashboard, Create Group, Profile)
 - User Profile (Firebase user data)
 - Fully responsive UI (mobile + desktop)

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { signOut } from "firebase/auth";
 
-import { auth } from "../firebase/firebase";
+import { auth } from "../firebase";
 
 import { useAuth } from "../context/AuthContext";
 

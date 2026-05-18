@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
-import { db } from "../firebase/firebase";
+import { db } from "../firebase";
 
 function Groups() {
   const [groups, setGroups] = useState([]);

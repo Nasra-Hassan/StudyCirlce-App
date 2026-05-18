@@ -36,7 +36,14 @@ function App() {
           }
         />
 
-        <Route path="/groups" element={<Groups />} />
+        <Route
+  path="/groups"
+  element={
+    <ProtectedRoute>
+      <Groups />
+    </ProtectedRoute>
+  }
+/>
 
         <Route
           path="/create-group"

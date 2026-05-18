@@ -1,18 +1,35 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 
 function CreateGroup() {
+  const { user } = useAuth();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (!user) {
+      alert("You must be logged in to create a group");
+      return;
+    }
+
     try {
+      setLoading(true);
+
       await addDoc(collection(db, "groups"), {
         title,
         description,
+
+      
+        createdBy: user.email,
+        favorites: [],
+        members: [user.email],
+
         createdAt: new Date(),
       });
 
@@ -23,6 +40,8 @@ function CreateGroup() {
     } catch (error) {
       console.log(error);
       alert("Failed to create group");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -33,10 +52,7 @@ function CreateGroup() {
           Create Study Group
         </h1>
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4"
-        >
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="text"
             placeholder="Group Title"
@@ -57,9 +73,10 @@ function CreateGroup() {
 
           <button
             type="submit"
+            disabled={loading}
             className="bg-blue-600 text-white py-3 rounded hover:bg-blue-700"
           >
-            Create Group
+            {loading ? "Creating..." : "Create Group"}
           </button>
         </form>
       </div>

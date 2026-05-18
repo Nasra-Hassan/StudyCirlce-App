@@ -23,10 +23,12 @@ function Navbar() {
 
       <div className="flex gap-4 items-center">
 
-        <Link to="/groups">Groups</Link>
+        
 
         {user && (
-          <>
+          <>  
+           <Link to="/groups">Groups</Link>
+           
             <Link to="/dashboard">Dashboard</Link>
 
             <Link to="/create-group">Create Group</Link>
